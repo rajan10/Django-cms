@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Company</title>
+</head>
+<body>
+<form action="{% url 'delete_company' object.pk %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>Delete Company</h1></legend>
+
+        <p>Are you sure you want to Delete "{{ object }}"?</p>
+    </fieldset>
+  <input type="submit" value="Confirm">
+</form>
+</body>
+</html>

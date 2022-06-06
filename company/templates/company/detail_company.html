@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Company View</title>
+</head>
+
+<body>
+
+<p> {{ object.name }}</p>
+<table style="border:1px solid">
+
+    <thead>
+     <th >SN</th><th>Name</th><th>Type </th><th>Vat ID#</th> <th>Home</th>
+
+    </thead>
+    <tbody>
+
+    <tr><td> {{ forloop.counter }}. </td>
+        <td> {{ object.company_name }} <td>
+        <td> {{ object.company_type }} </td>
+        <td> {{ object.vat_id_number }} </td>
+        <td> <a href="{% url 'index'  %}"> Home page</a> </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

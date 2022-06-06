@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<body>
+<form action="{% url 'create_employee'  %}" method="POST">
+  {% csrf_token %}
+    <fieldset>
+
+        <legend>
+
+            <h1> Create Employee</h1>
+        </legend>
+
+        {{ form.as_p }}
+        <input type="Submit" value="Create Employee">
+
+        </fieldset>
+
+
+
+
+</form>
+
+
+</body>
+</html>

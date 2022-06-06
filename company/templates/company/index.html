@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+<table style="border:1px solid">
+    <thead>
+     <th >SN</th><th>Name</th><th>Type</th><th>VAT #</th>
+   <th>Detail</th> <th>Update</th>  <th>Delete</th>
+    </thead>
+    <tbody>
+    {% for company in object_list %}
+    <tr><td>{{ forloop.counter }}. </td>
+        <td>{{ company.company_name }}<td>
+        <td>{{ company.company_type }} </td>
+        <td>{{ company.vat_id_number }} </td>
+
+        <td><a href="{% url 'detail_company' company.pk  %}">Detail </a> </td>
+         <td><a href="{% url 'update_company' company.pk  %}">Update </a> </td>
+        <td><a href="{% url 'delete_company' company.pk  %}">Delete </a> </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

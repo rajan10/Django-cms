@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Student</title>
+</head>
+<body>
+
+<form action="{% url 'create_company' %}" method="POST">
+  {% csrf_token %}
+
+  <fieldset>
+      <legend><h1>Create Company</h1></legend>
+
+      {{ form.as_p }}
+
+
+
+  </fieldset>
+  <input type="submit" value="Create Company">
+  </form>
+
+</body>
+</html>
