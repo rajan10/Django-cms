@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update Company</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block title %}
+    <title>Update Company</title>
+{% endblock %}
+
+   {% block content %}
 <form method="POST">
     {% csrf_token %}
     <fieldset>
@@ -15,6 +14,4 @@
     </fieldset>
     <input type="submit" value="Update Company">
 </form>
-
-</body>
-</html>
+{% endblock %}

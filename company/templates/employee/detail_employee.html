@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Email View</title>
+</head>
+
+<body>
+
+<p> {{ data.name }}</p>
+<table style="border:1px solid">
+
+    <thead>
+     <th >SN</th><th>Name</th><th>Company </th><th>Full Name</th> <th>Designation</th><th>Email</th><th>Phone</th>
+
+    </thead>
+    <tbody>
+
+    <tr><td> {{ forloop.counter }}. </td>
+        <td> {{ data.company }} <td>
+        <td> {{ data.full_name }} </td>
+        <td> {{ data.designation }} </td>
+        <td> {{ data.email }} </td>
+        <td> {{ data.phone }} </td>
+        <td> <a href="{% url 'company/read_employee/ %}"> Employee Home page</a> </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.views import generic
 from company.models import Company, Employee
 from django.views.generic import View
@@ -6,6 +6,7 @@ from .forms import CompanyForm, EmployeeForm
 from django.urls import reverse
 # Create your views here.
 
+#class base views implementation of Company
 class HomeView(generic.ListView):
     template_name='company/index.html'
     model=Company
@@ -58,7 +59,7 @@ class DeleteCompanyView(generic.DeleteView):
     success_url='/company'
         #for url use /
 
-
+# Function-base views implementation
 # company/create_employee/'
 def create_employee(request):
     if request.method=="GET":
@@ -81,10 +82,43 @@ def create_employee(request):
 
             employee=Employee(company=company, full_name=full_name,designation=designation,email=email,phone=phone)
             employee.save()
-            # url
-            return redirect('/company/')
+            # 2 url
+            return redirect('/company/read_employee')
 
+def read_employee(request):
+    employees=Employee.objects.all()
 
+    return render(request, "employee/read_employee.html",{'employees':employees})
+
+def update_employee(request, id):
+    employee=get_object_or_404(Employee, pk=id)
+    if request.method=="GET":
+        data={'full_name':employee.full_name, 'designation':employee.designation,'email':employee.email, 'phone':employee.phone}
+        form=EmployeeForm(data)
+        context={}
+        context['form']=form
+        return render(request, template_name='employee/update_employee.html', context=context)
+    if request.method=="POST":
+        form=EmployeeForm(request.POST)
+        if form.is_valid():
+            employee.full_name=form.cleaned_data['full_name']
+            employee.designation=form.cleaned_data['designation']
+            employee.email=form.cleaned_data['email']
+            employee.phone=form.cleaned_data['phone']
+            employee.save(update_fields=['full_name','designation','email','phone'])
+            return redirect('/company/read_employee')
+
+def detail_employee(request,id):
+    employee=Employee.objects.filter(pk=id)
+    context={}
+    context['data'] = {'full_name': employee.full_name, 'designation': employee.designation, 'email': employee.email,
+            'phone': employee.phone}
+    return render(request,template_name='employee/detail_employee.html',context=context)
+
+def delete_employee(request,id):
+    employee=Employee.objects.filter(pk=id)
+    employee.delete()
+    return redirect('/company/read_employee')
 
 
 

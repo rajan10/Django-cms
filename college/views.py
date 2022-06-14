@@ -2,8 +2,6 @@ from django.shortcuts import render,redirect, get_object_or_404
 from .forms import CollegeForm
 from college.models import College
 
-
-
 # function base views
 # Create your views here.
 def index(request):
@@ -25,7 +23,6 @@ def create_college(request):
             college=College(name=name,address=address, phone=phone)
             college.save()
             return redirect('college/index')
-
 
 def update_college(request, id):
     college=get_object_or_404(College, pk=id)

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home page</title>
-</head>
-<body>
-<table style="border:1px solid">
+{% extends "base.html" %}
+
+{% block title %} <title>Home page</title> {% endblock %}
+
+    {% block content %}
+    <table style="border:1px solid">
     <thead>
      <th >SN</th><th>Name</th><th>Type</th><th>VAT #</th>
    <th>Detail</th> <th>Update</th>  <th>Delete</th>
@@ -26,5 +24,4 @@
     </tbody>
 </table>
 
-</body>
-</html>
+ {% endblock content %}

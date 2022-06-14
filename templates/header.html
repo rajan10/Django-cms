@@ -1,0 +1,13 @@
+<nav>
+    <ul>
+        <li>
+            <a href="{% url 'index' %}"> College Home Page ||</a>
+             <a href="{% url 'company_index' %}">Company Home Page ||</a>
+            <a href ="{% url 'create_college' %}"> Create College || </a>
+
+        </li>
+    </ul>
+</nav>
+
+path('company/', HomeView.as_view(), name="index")
+    path('',index, name="index"),

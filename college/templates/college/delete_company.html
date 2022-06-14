@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Company</title>
-</head>
-<body>
+{% extends "base.html %}
+
+{% block title %} <title>Delete Company</title> {% endblock %}
+
+    {% block content %}
 <form action="{% url 'delete_company' object.pk %}" method="POST">
     {% csrf_token %}
     <fieldset>
@@ -14,5 +12,4 @@
     </fieldset>
   <input type="submit" value="Confirm">
 </form>
-</body>
-</html>
+{% endblock content %}
